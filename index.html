@@ -97,6 +97,16 @@
   ul.clean li{padding:7px 0 7px 26px;position:relative;font-size:.98rem}
   ul.clean li:before{content:"•";position:absolute;left:6px;color:var(--ember);font-weight:800}
 
+  /* Video-Banner */
+  .videoband{position:relative;width:100%;aspect-ratio:16/9;max-height:60vh;overflow:hidden;background:#12212b;margin-bottom:26px}
+  .videoband iframe,.videoband .vb-fallback{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .videoband .vb-fallback{object-fit:cover}
+  /* Video füllt Breite, überproportional hoch skaliert damit YT-Ränder/Logo aus dem Bild laufen */
+  @media(min-aspect-ratio:16/9){.videoband iframe{height:300%;top:-100%}}
+  @media(max-aspect-ratio:16/9){.videoband iframe{width:300%;left:-100%}}
+  .videoband .vb-scrim{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(18,33,43,.55));pointer-events:none}
+  .videoband .vb-label{position:absolute;left:14px;bottom:12px;color:#fff;font-size:.82rem;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.6);pointer-events:none}
+
   /* Lightbox */
   #lb{position:fixed;inset:0;background:rgba(10,18,24,.94);z-index:100;display:none;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
   #lb.open{display:flex}
@@ -203,16 +213,30 @@
   <div class="wrap">
     <span class="kicker">Warum diese Insel?</span>
     <h2>Aarø – klein, ruhig, wunderschön</h2>
+    <div class="videoband">
+      <img class="vb-fallback" src="fotos/ausblick.jpeg" alt="Luftaufnahme von Aarø">
+      <iframe
+        src="https://www.youtube.com/embed/tNzRKyGPBYo?autoplay=1&mute=1&loop=1&playlist=tNzRKyGPBYo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1"
+        title="Aarø aus der Luft"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen loading="lazy"></iframe>
+      <div class="vb-scrim"></div>
+      <span class="vb-label">▶ Aarø aus der Luft</span>
+    </div>
     <p class="lead">Nur 5,7 km², rund 150 Einwohner, mitten im Kleinen Belt. Flache Landschaft mit Stränden, Deichen, Salzwiesen und einem EU-geschützten Vogelreservat. Wie geschaffen zum Entschleunigen.</p>
     <div class="grid grid-2">
-      <div class="card"><div class="ico">🍷</div><h3>Insel-Weingut</h3><p>Årø Vingård – dänischer Wein seit 2004, mit Verkostung & Weinbergspaziergang.</p></div>
-      <div class="card"><div class="ico">🍺</div><h3>Kleinste Brauerei DKs</h3><p>Lokales Inselbier probieren und Inselgeschichte mitnehmen.</p></div>
+      <div class="card"><div class="ico">🍷</div><h3>Insel-Weingut</h3><p>Årø Vingård – dänischer Wein seit 2004, mit Verkostung & Weinbergspaziergang. <a href="https://www.aaro-vin.dk" target="_blank" rel="noopener" style="color:var(--ember-dk);font-weight:700;white-space:nowrap">aaro-vin.dk →</a></p></div>
+      <div class="card"><div class="ico">🍺</div><h3>Kleinste Brauerei DKs</h3><p>Lokales Inselbier probieren und Inselgeschichte mitnehmen. <a href="https://www.aaroebryg.dk" target="_blank" rel="noopener" style="color:var(--ember-dk);font-weight:700;white-space:nowrap">aaroebryg.dk →</a></p></div>
       <div class="card"><div class="ico">🐦</div><h3>Aarø Kalv</h3><p>2,5 km Landzunge, Vogelschutzgebiet mit Galloway-Rindern – im Winter zugänglich.</p></div>
       <div class="card"><div class="ico">🗼</div><h3>Leuchtturm 1905</h3><p>An der Südspitze – besonders schön im Licht des Sonnenuntergangs.</p></div>
     </div>
     <div class="gallery">
       <figure class="wide"><img src="fotos/aaro_hafen.jpeg" alt="Yachthafen von Aarø"><figcaption>Der kleine Yachthafen von Aarø</figcaption></figure>
       <figure><img src="fotos/aaro_weingut.jpeg" alt="Årø Vingård Weingut"><figcaption>Årø Vingård – das Insel-Weingut</figcaption></figure>
+      <figure><img src="fotos/weingut_weine.jpeg" alt="Weine von Årø Vingård: Rot, Weiß und Rosé"><figcaption>Eigene Insel-Weine: Rot, Weiß & Rosé</figcaption></figure>
+      <figure><img src="fotos/brauerei_biere.jpeg" alt="Biere von Aarø Bryg am Strand"><figcaption>Aarø Bryg – „Fra ø til øl“, Inselbier am Strand</figcaption></figure>
       <figure><img src="fotos/ausblick.jpeg" alt="Blick über die Insellandschaft"><figcaption>Weite Salzwiesen und Lagune</figcaption></figure>
     </div>
   </div>
@@ -227,7 +251,7 @@
     <div class="grid grid-2">
       <div class="card"><div class="ico">🥾</div><h3>Winterwanderungen</h3><p>Über Strände, Deiche und Küstenwege – zum Leuchtturm und nach Aarø Kalv.</p></div>
       <div class="card"><div class="ico">🍲</div><h3>Koch- & Kaminabende</h3><p>Gemeinsam kochen, Glühwein, Spiele, Filme – echte Hygge.</p></div>
-      <div class="card"><div class="ico">🍷</div><h3>Wein & Bier</h3><p>Weingut und Inselbrauerei (Winter-Öffnungszeiten vorher kurz prüfen).</p></div>
+      <div class="card"><div class="ico">🍷</div><h3>Wein & Bier</h3><p>Weingut & Inselbrauerei sind im Winter vermutlich geschlossen. Wir können aber vorab anfragen, ob es zu Silvester/Neujahr Sonderöffnungszeiten gibt.</p></div>
       <div class="card"><div class="ico">🚗</div><h3>Tagesausflug</h3><p>Haderslev (Dom, Cafés), Christiansfeld (UNESCO) oder Sønderborg.</p></div>
     </div>
     <div class="note"><b>Schlechtwetter?</b> Kein Problem – zwei Kamine, große Küche, Spieleabend und Jahresrückblick: Jede:r bringt 3 Highlights, eine Überraschung und einen Wunsch für 2027 mit.</div>
