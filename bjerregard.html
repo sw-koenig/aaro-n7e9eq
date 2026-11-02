@@ -28,16 +28,15 @@
 
   .backlink{display:inline-flex;align-items:center;gap:6px;color:var(--sea);text-decoration:none;font-weight:600;font-size:.9rem}
 
-  /* Hero ohne Foto: Farbverlauf */
-  .hero{position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;
-    background:linear-gradient(145deg,#2c5a70 0%,#1b3a4b 55%,#12212b 100%)}
-  .hero:before{content:"";position:absolute;inset:0;opacity:.14;
-    background:radial-gradient(circle at 80% 20%,#d98241 0,transparent 45%),radial-gradient(circle at 10% 90%,#2c5a70 0,transparent 40%)}
+  /* Hero */
+  .hero{position:relative;min-height:94vh;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+  .hero-scrim{position:absolute;inset:0;z-index:2;
+    background:linear-gradient(180deg,rgba(18,33,43,.15) 0%,rgba(18,33,43,.35) 55%,rgba(18,33,43,.88) 100%)}
   .hero .wrap{padding-bottom:54px;padding-top:40px;position:relative;z-index:3}
   .hero-top{position:absolute;top:0;left:0;right:0;z-index:3}
   .hero-top .wrap{padding-top:22px;padding-bottom:0}
   .hero-top a{color:#fff;opacity:.9}
-  .hero-emoji{font-size:3.4rem;margin-bottom:10px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
   .hero-tag{display:inline-block;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);
     border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 14px;font-size:.78rem;font-weight:600;letter-spacing:.04em;margin-bottom:20px}
   .hero h1{font-size:2.9rem;font-weight:800;margin-bottom:12px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
@@ -62,15 +61,12 @@
 
   .gallery{display:grid;gap:12px;margin-top:22px}
   @media(min-width:560px){.gallery{grid-template-columns:1fr 1fr}}
-
-  /* Foto-Platzhalter */
-  .ph{position:relative;border-radius:14px;border:2px dashed var(--line);background:
-      repeating-linear-gradient(45deg,var(--cream),var(--cream) 12px,#f6efe3 12px,#f6efe3 24px);
-    aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--muted)}
-  .ph .pico{font-size:1.8rem;opacity:.6;margin-bottom:6px}
-  .ph .pcap{font-size:.86rem;font-weight:600;color:var(--sea)}
-  .ph .psub{font-size:.72rem;margin-top:3px;opacity:.75}
-  @media(min-width:560px){.ph.wide{grid-column:1/-1;aspect-ratio:16/9}}
+  figure{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin:0;cursor:zoom-in;background:var(--cream)}
+  figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .4s ease}
+  figure:active img{transform:scale(1.02)}
+  figure figcaption{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:.82rem;font-weight:600;
+    padding:22px 12px 10px;background:linear-gradient(transparent,rgba(18,33,43,.8))}
+  @media(min-width:560px){figure.wide{grid-column:1/-1}figure.wide img{aspect-ratio:16/9}}
 
   .stars{color:var(--ember);font-size:1.1rem;letter-spacing:2px}
   .rating-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;flex-wrap:wrap}
@@ -78,8 +74,6 @@
 
   .note{background:#fff4e9;border:1px solid #f0d3b4;border-left:4px solid var(--ember);border-radius:12px;padding:14px 16px;font-size:.92rem;margin-top:16px}
   .note b{color:var(--ember-dk)}
-  .note.photos{background:#eef4f7;border-color:#cfe0e8;border-left-color:var(--sea2)}
-  .note.photos b{color:var(--sea)}
 
   .cta{background:var(--sea);color:#fff;text-align:center}
   .cta h2{color:#fff}.cta .lead{color:rgba(255,255,255,.8);margin-left:auto;margin-right:auto}
@@ -92,19 +86,26 @@
   ul.clean{list-style:none}
   ul.clean li{padding:7px 0 7px 26px;position:relative;font-size:.98rem}
   ul.clean li:before{content:"•";position:absolute;left:6px;color:var(--ember);font-weight:800}
+
+  /* Lightbox */
+  #lb{position:fixed;inset:0;background:rgba(10,18,24,.94);z-index:100;display:none;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
+  #lb.open{display:flex}
+  #lb img{max-width:100%;max-height:92vh;object-fit:contain;border-radius:8px}
+  #lb .x{position:absolute;top:14px;right:18px;color:#fff;font-size:2rem;line-height:1;opacity:.8}
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <header class="hero">
+  <img class="hero-bg" src="fotos/spar_to/hero.jpg" alt="Ferienhaus Spar To in den Dünen von Bjerregård mit umzäunter Terrasse">
+  <div class="hero-scrim"></div>
   <div class="hero-top"><div class="wrap"><a class="backlink" href="index.html">← Alle Unterkünfte</a></div></div>
   <div class="wrap">
-    <div class="hero-emoji">🌊</div>
     <span class="hero-tag">🇩🇰 Westjütland · Holmsland Klit</span>
     <h1>Spar To<br>in Bjerregård</h1>
     <div class="sub">Ferienhaus direkt am Nordsee-Strand – Holzofen, umzäunte Terrasse, Lagerfeuer.</div>
-    <div class="dates">31.12.2026 – 03.01.2027 · 3 Nächte · für 3 (Platz für bis zu 5)</div>
+    <div class="dates">ab 31.12.2026 · bis zu 6 Nächte (bis 06.01.) · für 3 (Platz für bis zu 5)</div>
   </div>
   <div class="scroll-hint">↓</div>
 </header>
@@ -146,17 +147,24 @@
       <div class="card"><div class="ico">🍳</div><h3>Küche & Extras</h3><p>Kühlschrank, Spülmaschine, Mikrowelle, Kaffeemaschine, Grill, WLAN; Wasserpark für Gäste nutzbar.</p></div>
     </div>
 
-    <div class="note photos"><b>📷 Fotos folgen.</b> Für diese Unterkunft werden die passenden Bilder noch ergänzt. Solange zeigen die Kacheln unten, welche Räume kommen – auf dem Booking-Listing gibt es bereits alle Fotos.</div>
-
     <div class="gallery">
-      <div class="ph wide"><div class="pico">🖼️</div><div class="pcap">Außenansicht am Strand</div><div class="psub">Foto folgt</div></div>
-      <div class="ph"><div class="pico">🛋️</div><div class="pcap">Wohnzimmer mit Holzofen</div><div class="psub">Foto folgt</div></div>
-      <div class="ph"><div class="pico">🍳</div><div class="pcap">Küche</div><div class="psub">Foto folgt</div></div>
-      <div class="ph"><div class="pico">🛏️</div><div class="pcap">Schlafzimmer ①</div><div class="psub">Foto folgt</div></div>
-      <div class="ph"><div class="pico">🛏️</div><div class="pcap">Schlafzimmer ②</div><div class="psub">Foto folgt</div></div>
-      <div class="ph"><div class="pico">🛁</div><div class="pcap">Badezimmer</div><div class="psub">Foto folgt</div></div>
-      <div class="ph"><div class="pico">🏕️</div><div class="pcap">Umzäunte Terrasse</div><div class="psub">Foto folgt</div></div>
-      <div class="ph"><div class="pico">🌅</div><div class="pcap">Strand & Nordsee</div><div class="psub">Foto folgt</div></div>
+      <figure class="wide"><img src="fotos/spar_to/terasse.jpg" alt="Große umzäunte Holzterrasse mit Esstisch und Liegen"><figcaption>Umzäunte Terrasse mit Sonnenliegen – direkt am Haus</figcaption></figure>
+      <figure><img src="fotos/spar_to/wohnzimmer.jpg" alt="Wohnzimmer mit Holzofen und Ledersofa"><figcaption>Wohnzimmer mit Holzofen</figcaption></figure>
+      <figure><img src="fotos/spar_to/esstisch.jpg" alt="Essbereich mit großer Fensterfront"><figcaption>Essbereich mit Fensterfront zur Terrasse</figcaption></figure>
+      <figure><img src="fotos/spar_to/kueche.jpg" alt="Küche mit Spülmaschine, Mikrowelle und Kühlschrank"><figcaption>Gut ausgestattete Küche</figcaption></figure>
+      <figure><img src="fotos/spar_to/wohnzimmer(2).jpg" alt="Offener Wohn- und Essbereich"><figcaption>Offener Wohn- & Essbereich</figcaption></figure>
+      <figure><img src="fotos/spar_to/feuerschale.jpg" alt="Feuerschale auf gepflasterter Terrasse in den Dünen"><figcaption>Feuerschale in den Dünen</figcaption></figure>
+    </div>
+
+    <h3 style="margin-top:34px;color:var(--sea)">Schlafen & Bad</h3>
+    <p class="lead" style="margin-top:6px">Drei Schlafzimmer mit insgesamt fünf Betten – jeder bekommt ein eigenes Bett, dazu ein Bad mit Fußbodenheizung.</p>
+    <div class="gallery" style="margin-top:12px">
+      <figure><img src="fotos/spar_to/schlafzimmer.jpg" alt="Schlafzimmer mit Doppelbett"><figcaption>① Schlafzimmer mit Doppelbett</figcaption></figure>
+      <figure><img src="fotos/spar_to/schlafzimmer_2.jpg" alt="Schlafzimmer mit zwei Einzelbetten"><figcaption>② Schlafzimmer mit zwei Einzelbetten</figcaption></figure>
+      <figure><img src="fotos/spar_to/schlafzimmer_3.jpg" alt="Schlafzimmer mit Etagenbett"><figcaption>③ Schlafzimmer mit Etagenbett</figcaption></figure>
+      <figure><img src="fotos/spar_to/badezimmer.jpg" alt="Badezimmer mit Dusche und Waschmaschine"><figcaption>Badezimmer mit Dusche & Fußbodenheizung</figcaption></figure>
+      <figure><img src="fotos/spar_to/badezimmer(2).jpg" alt="Waschbereich mit Waschmaschine"><figcaption>Zusätzlicher Waschbereich</figcaption></figure>
+      <figure><img src="fotos/spar_to/garten.jpg" alt="Garten mit Spielturm, Rutsche und Sandkasten"><figcaption>Garten mit Spielturm & Schuppen</figcaption></figure>
     </div>
   </div>
 </section>
@@ -188,6 +196,11 @@
       <div class="card"><div class="ico">🌲</div><h3>Blåbjerg Klitplantage</h3><p>Dänemarks größtes Dünenwaldgebiet (13 km) zum Wandern.</p></div>
       <div class="card"><div class="ico">🧱</div><h3>Legoland Billund</h3><p>Ca. 1 Std. Fahrt – Weihnachtssaison bis 31.12.; Januar-Öffnung vorher prüfen.</p></div>
     </div>
+    <div class="gallery">
+      <figure class="wide"><img src="fotos/spar_to/strand.jpg" alt="Breiter Nordsee-Sandstrand bei Bjerregård"><figcaption>Der Nordsee-Strand direkt vor der Tür</figcaption></figure>
+      <figure><img src="fotos/spar_to/umgebung_in_den_duenen.jpg" alt="Ferienhaus in der Dünenlandschaft"><figcaption>Lage mitten in den Dünen</figcaption></figure>
+      <figure><img src="fotos/spar_to/umgebung.jpg" alt="Dünensee in der Umgebung von Bjerregård"><figcaption>Dünenseen & Natur rundherum</figcaption></figure>
+    </div>
     <div class="note"><b>Silvester vor Ort:</b> In Hvide Sande traditionelle Westjütland-Neujahrskur mit Gratis-Champagner & Kransekage. Feuerwerk am Strand möglich (in DK nur 31.12./01.01., mit Sicherheitsabstand).</div>
   </div>
 </section>
@@ -198,11 +211,12 @@
     <span class="kicker">Auf einen Blick</span>
     <h2>Das Wichtigste</h2>
     <div class="grid grid-2">
-      <div class="card"><div class="ico">💶</div><h3>Preis</h3><p>644 € für 3 Nächte + 112 € Endreinigung + Strom (0,52 €/kWh) ≈ 255 €+/Nacht effektiv.</p></div>
-      <div class="card"><div class="ico">📅</div><h3>Zeitraum</h3><p>31.12.2026 – 03.01.2027 – nur 3 Nächte, Anreise am Silvestertag.</p></div>
+      <div class="card"><div class="ico">💶</div><h3>Preis</h3><p>3 Nächte: 644 € + 112 € Reinigung + Strom ≈ <b>255 €+/Nacht</b>. Bei 6 Nächten z. B. 813 € gesamt ≈ <b>136 €/Nacht</b> – mit Länge deutlich günstiger.</p></div>
+      <div class="card"><div class="ico">📅</div><h3>Zeitraum</h3><p>Anreise frühestens Do 31.12.2026 – dafür bis zu 6 Nächte (bis Mi 06.01.2027) möglich.</p></div>
       <div class="card"><div class="ico">🚗</div><h3>Anreise</h3><p>Ca. 8 Std. ab Schwetzingen (Dänemark); Billund-Flughafen 72 km.</p></div>
       <div class="card"><div class="ico">⚠️</div><h3>Zu beachten</h3><p>Nur 1 Review · nicht stornierbar, volle Vorauszahlung · kleinstes Haus (70 m², 1 Bad) · kommerzieller Verwalter.</p></div>
     </div>
+    <div class="note"><b>📅 Anreise erst ab 31.12.</b> Früherer Check-in nicht möglich – dafür kann man länger bleiben (bis Mi 06.01.). Je länger die Buchung, desto günstiger pro Nacht: 6 Nächte z. B. 813 € gesamt ≈ 136 €/Nacht.</div>
   </div>
 </section>
 
@@ -219,10 +233,18 @@
 
 <footer>
   <div class="wrap">
-    <div>Spar To · Bjerregård (Westjütland) · 31.12.2026 – 03.01.2027</div>
+    <div>Spar To · Bjerregård (Westjütland) · Anreise ab 31.12.2026, bis zu 6 Nächte</div>
     <div>Quelle: booking.com (NOVASOL) · visitvesterhavet.de · esmark.de</div>
   </div>
 </footer>
 
+<div id="lb"><span class="x">×</span><img src="" alt=""></div>
+<script>
+  var lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+  document.querySelectorAll('figure img').forEach(function(im){
+    im.addEventListener('click',function(){lbImg.src=im.src;lbImg.alt=im.alt;lb.classList.add('open')});
+  });
+  lb.addEventListener('click',function(){lb.classList.remove('open');lbImg.src=''});
+</script>
 </body>
 </html>
