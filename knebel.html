@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1b3a4b">
+<title>Haus am Strand · Knebel (Djursland) · Silvester 2026/27</title>
+<style>
+  :root{
+    --sea:#1b3a4b; --sea2:#2c5a70; --sand:#f3ece1; --cream:#fbf7f0;
+    --ember:#d98241; --ember-dk:#b5652c; --ink:#23303a; --muted:#6b7a85;
+    --line:#e2d8c8; --card:#ffffff; --shadow:0 8px 30px rgba(27,58,75,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--sand);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+  section{padding:60px 0}
+  section + section{border-top:1px solid var(--line)}
+  h1,h2,h3{line-height:1.2;letter-spacing:-.02em}
+  h2{font-size:1.75rem;color:var(--sea);margin-bottom:6px}
+  .kicker{text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:700;color:var(--ember-dk);margin-bottom:14px;display:block}
+  .lead{font-size:1.08rem;color:var(--muted);margin-bottom:26px;max-width:58ch}
+  p{margin-bottom:14px}
+
+  .backlink{display:inline-flex;align-items:center;gap:6px;color:var(--sea);text-decoration:none;font-weight:600;font-size:.9rem}
+
+  /* Hero */
+  .hero{position:relative;min-height:94vh;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+  .hero-scrim{position:absolute;inset:0;z-index:2;
+    background:linear-gradient(180deg,rgba(18,33,43,.15) 0%,rgba(18,33,43,.35) 55%,rgba(18,33,43,.88) 100%)}
+  .hero .wrap{padding-bottom:54px;padding-top:40px;position:relative;z-index:3}
+  .hero-top{position:absolute;top:0;left:0;right:0;z-index:3}
+  .hero-top .wrap{padding-top:22px;padding-bottom:0}
+  .hero-top a{color:#fff;opacity:.9}
+  .hero-tag{display:inline-block;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 14px;font-size:.78rem;font-weight:600;letter-spacing:.04em;margin-bottom:20px}
+  .hero h1{font-size:2.9rem;font-weight:800;margin-bottom:12px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+  .hero .sub{font-size:1.15rem;opacity:.95;font-weight:500;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+  .hero .dates{margin-top:18px;font-size:1rem;opacity:.9;font-variant-numeric:tabular-nums}
+  .scroll-hint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:1.4rem;opacity:.8;z-index:3;animation:bob 1.8s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+  .big-quote{font-size:1.5rem;font-weight:700;color:var(--sea);line-height:1.35;border-left:4px solid var(--ember);padding-left:18px;margin:4px 0 8px}
+
+  .grid{display:grid;gap:14px;margin-top:8px}
+  @media(min-width:560px){.grid-2{grid-template-columns:1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+  .card .ico{font-size:1.5rem;margin-bottom:8px}
+  .card h3{font-size:1.05rem;color:var(--sea);margin-bottom:4px}
+  .card p{font-size:.95rem;color:var(--muted);margin:0}
+
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+  .fact{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center}
+  .fact .n{font-size:1.5rem;font-weight:800;color:var(--ember-dk);line-height:1}
+  .fact .l{font-size:.72rem;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:.05em}
+
+  .gallery{display:grid;gap:12px;margin-top:22px}
+  @media(min-width:560px){.gallery{grid-template-columns:1fr 1fr}}
+  figure{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin:0;cursor:zoom-in;background:var(--cream)}
+  figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .4s ease}
+  figure:active img{transform:scale(1.02)}
+  figure figcaption{position:absolute;left:0;right:0;bottom:0;color:#fff;font-size:.82rem;font-weight:600;
+    padding:22px 12px 10px;background:linear-gradient(transparent,rgba(18,33,43,.8))}
+  @media(min-width:560px){figure.wide{grid-column:1/-1}figure.wide img{aspect-ratio:16/9}}
+
+  .stars{color:var(--ember);font-size:1.1rem;letter-spacing:2px}
+  .rating-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+  .rating-row .big{font-size:2.2rem;font-weight:800;color:var(--sea)}
+
+  .note{background:#fff4e9;border:1px solid #f0d3b4;border-left:4px solid var(--ember);border-radius:12px;padding:14px 16px;font-size:.92rem;margin-top:16px}
+  .note b{color:var(--ember-dk)}
+
+  .cta{background:var(--sea);color:#fff;text-align:center}
+  .cta h2{color:#fff}.cta .lead{color:rgba(255,255,255,.8);margin-left:auto;margin-right:auto}
+  .btn{display:inline-block;margin-top:24px;background:var(--ember);color:#fff;text-decoration:none;font-weight:700;padding:14px 28px;border-radius:999px;box-shadow:0 6px 20px rgba(217,130,65,.4)}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.4);box-shadow:none;margin-left:8px}
+
+  footer{background:#12212b;color:rgba(255,255,255,.55);font-size:.78rem;padding:30px 0}
+  footer .wrap{display:flex;flex-direction:column;gap:6px}
+
+  ul.clean{list-style:none}
+  ul.clean li{padding:7px 0 7px 26px;position:relative;font-size:.98rem}
+  ul.clean li:before{content:"•";position:absolute;left:6px;color:var(--ember);font-weight:800}
+
+  /* Lightbox */
+  #lb{position:fixed;inset:0;background:rgba(10,18,24,.94);z-index:100;display:none;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
+  #lb.open{display:flex}
+  #lb img{max-width:100%;max-height:92vh;object-fit:contain;border-radius:8px}
+  #lb .x{position:absolute;top:14px;right:18px;color:#fff;font-size:2rem;line-height:1;opacity:.8}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <img class="hero-bg" src="fotos/blockh%C3%BCtte_knebel/sonnenuntergang_winter.avif" alt="Wintersonnenuntergang über der Bucht bei Knebel">
+  <div class="hero-scrim"></div>
+  <div class="hero-top"><div class="wrap"><a class="backlink" href="index.html">← Alle Unterkünfte</a></div></div>
+  <div class="wrap">
+    <span class="hero-tag">🇩🇰 Djursland · Mols Bjerge</span>
+    <h1>Haus am Strand<br>bei Knebel</h1>
+    <div class="sub">Blockhütte direkt am Wasser – privater Strandzugang, Kamin, Weitblick.</div>
+    <div class="dates">30.12.2026 – 02.01.2027 · 3 Nächte · für 3 (Platz für bis zu 4)</div>
+  </div>
+  <div class="scroll-hint">↓</div>
+</header>
+
+<!-- IDEE -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Die Idee</span>
+    <h2>Silvester direkt am Meer</h2>
+    <p class="big-quote">„Eine Blockhütte mit privatem Strandzugang an der Knebel Vig – Kamin an, raus auf den Strand, Feuerwerk über der Bucht.“</p>
+    <ul class="clean">
+      <li>Direkte Strandlage mit eigenem Zugang und Blick über die Bucht.</li>
+      <li>Kaminholz im Winter inklusive – gemütliche Basis bei jedem Wetter.</li>
+      <li>Sehr ruhig und privat: Hasen, Fasane und Rehe statt Nachbarn.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- UNTERKUNFT -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Unser Zuhause für die Tage</span>
+    <h2>Die Blockhütte</h2>
+    <p class="lead">Ein ganzes Ferienhaus auf zwei Etagen, direkt am Strand mit privatem Strandzugang und spektakulärem Blick über die Knebel Vig. Mit 125 m² reichlich Platz für drei – und Luft nach oben, falls noch jemand dazukommt.</p>
+
+    <div class="facts">
+      <div class="fact"><div class="n">125</div><div class="l">m² Wohnfläche</div></div>
+      <div class="fact"><div class="n">2</div><div class="l">Schlafzimmer</div></div>
+      <div class="fact"><div class="n">3</div><div class="l">Betten + Galerie</div></div>
+      <div class="fact"><div class="n">1</div><div class="l">Badezimmer</div></div>
+      <div class="fact"><div class="n">🔥</div><div class="l">Kamin inkl. Holz</div></div>
+      <div class="fact"><div class="n">0 m</div><div class="l">zum Strand</div></div>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card"><div class="ico">🏖️</div><h3>Privater Strandzugang</h3><p>Flacher Badestrand direkt vor der Tür, Badestrand mit Blauer Flagge in der Nähe.</p></div>
+      <div class="card"><div class="ico">🔥</div><h3>Kamin & Weitblick</h3><p>Wohnzimmer mit Kamin und großer Fensterfront über die Bucht – Kaminholz im Winter inklusive.</p></div>
+      <div class="card"><div class="ico">🍳</div><h3>Große Küche</h3><p>Gut ausgestattet für gemeinsame Kochabende, plus Waschmaschine und Garage.</p></div>
+      <div class="card"><div class="ico">🦌</div><h3>Natur pur</h3><p>Sehr ruhige, private Lage mitten in der Natur – Rehe und Fasane direkt am Fenster.</p></div>
+    </div>
+
+    <div class="gallery">
+      <figure class="wide"><img src="fotos/blockh%C3%BCtte_knebel/wohnzimmer_ausblick.avif" alt="Wohnzimmer mit Panoramablick über die Bucht"><figcaption>Wohnbereich mit Fensterfront über die Knebel Vig</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/au%C3%9Fenansicht_1.jpg" alt="Außenansicht der Blockhütte"><figcaption>Die Blockhütte – direkt am Strand</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/strand.avif" alt="Strand an der Knebel Vig"><figcaption>Privater Strandzugang vor der Tür</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/wohnzimmer_sofa.jpg" alt="Wohnzimmer mit Sofa"><figcaption>Gemütlicher Wohnbereich</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/ofen.avif" alt="Kaminofen"><figcaption>Kamin – Holz im Winter inklusive</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/k%C3%BCche.avif" alt="Küche der Blockhütte"><figcaption>Große, gut ausgestattete Küche</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/wohnzimmer_esstisch.avif" alt="Esstisch am Fenster"><figcaption>Essbereich mit Blick nach draußen</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/dachterasse_ausblick.avif" alt="Blick von der Dachterrasse"><figcaption>Dachterrasse mit Weitblick</figcaption></figure>
+    </div>
+
+    <h3 style="margin-top:34px;color:var(--sea)">Schlafen & Bad</h3>
+    <p class="lead" style="margin-top:6px">Zwei Schlafzimmer plus ein Einzelbett auf der Galerie – drei bekommen je ein eigenes Bett.</p>
+    <div class="gallery" style="margin-top:12px">
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/schlafzimmer_1.avif" alt="Schlafzimmer 1"><figcaption>① Schlafzimmer</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/schlafzimmer_2.avif" alt="Schlafzimmer 2"><figcaption>② Schlafzimmer</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/treppe.avif" alt="Treppe zur Galerie"><figcaption>Treppe zur Galerie mit Einzelbett</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/badezimmer.jpg" alt="Badezimmer"><figcaption>Badezimmer</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Was Gäste sagen</span>
+    <h2>Top bewertet auf Airbnb</h2>
+    <div class="rating-row">
+      <span class="big">5,0</span>
+      <span class="stars">★★★★★</span>
+      <span style="color:var(--muted)">aus 82 Bewertungen · „Guest Favorite“</span>
+    </div>
+    <p class="lead" style="margin-top:12px">Gehört zu den Top 5 % der Listings. Host Morten (Journalist, spricht Deutsch) ist seit 7 Jahren aktiv und antwortet innerhalb einer Stunde.</p>
+    <div class="grid grid-2" style="margin-top:4px">
+      <div class="card"><p style="color:var(--ink)">„Alles war perfekt … Das Meer ist in Sichtweite, es gibt wunderbare Wanderungen und Aarhus ist bequem erreichbar.“<br><b style="color:var(--muted);font-weight:600;font-size:.85rem">— Lissy, Sept. 2026</b></p></div>
+      <div class="card"><p style="color:var(--ink)">„Spektakuläre Aussicht auf das Meer und die fantastische Natur … dieses Juwel können wir sehr empfehlen.“<br><b style="color:var(--muted);font-weight:600;font-size:.85rem">— Rafael, Aug. 2026</b></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REGION -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Warum diese Gegend?</span>
+    <h2>Djursland & Nationalpark Mols Bjerge</h2>
+    <p class="lead">Die Hütte liegt an der Knebel Vig, mitten in einer der schönsten Naturregionen Dänemarks – Hügel, Wald, Küste und die lebendige Stadt Aarhus in der Nähe.</p>
+    <div class="grid grid-2">
+      <div class="card"><div class="ico">🥾</div><h3>Mols Bjerge</h3><p>Endloses Wandernetz von kurzen Familienrouten bis zum 80-km-Trail; Panoramagipfel Trehøje (127 m).</p></div>
+      <div class="card"><div class="ico">🏰</div><h3>Kalø-Schlossruine</h3><p>Malerische Burgruine auf einer Landzunge in der Kalø Vig.</p></div>
+      <div class="card"><div class="ico">🎨</div><h3>Aarhus (ca. 45 Min.)</h3><p>ARoS (Rainbow-Panorama), „Den Gamle By“ und Outdoor-Eisbahn am Musikhuset.</p></div>
+      <div class="card"><div class="ico">⛵</div><h3>Ebeltoft (ca. 15 km)</h3><p>Kopfsteinpflaster-Altstadt, Fregatte Jylland und Glasmuseum.</p></div>
+    </div>
+    <div class="gallery">
+      <figure class="wide"><img src="fotos/blockh%C3%BCtte_knebel/dachterasse.avif" alt="Terrasse mit Blick über die Bucht"><figcaption>Terrasse über der Bucht</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/sonnenuntergang.avif" alt="Sonnenuntergang an der Bucht"><figcaption>Sonnenuntergang über der Knebel Vig</figcaption></figure>
+      <figure><img src="fotos/blockh%C3%BCtte_knebel/sonnenuntergang_winter(2).avif" alt="Winterlicher Sonnenuntergang"><figcaption>Winterstimmung am Wasser</figcaption></figure>
+    </div>
+    <div class="note"><b>Silvester vor Ort:</b> Dänische Traditionen – Königsrede um 18 Uhr, Kransekage und Stuhlsprung um Mitternacht. Privates Feuerwerk am Strand ist in Dänemark erlaubt (31.12./01.01.).</div>
+  </div>
+</section>
+
+<!-- STECKBRIEF -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Auf einen Blick</span>
+    <h2>Das Wichtigste</h2>
+    <div class="grid grid-2">
+      <div class="card"><div class="ico">💶</div><h3>Preis</h3><p>726 € für 3 Nächte (≈ 242 €/Nacht), Heizung & Kaminholz inklusive.</p></div>
+      <div class="card"><div class="ico">📅</div><h3>Zeitraum</h3><p>30.12.2026 – 02.01.2027 – nur 3 Nächte verfügbar.</p></div>
+      <div class="card"><div class="ico">🚗</div><h3>Anreise</h3><p>Ca. 8–9 Std. ab Schwetzingen (Dänemark), ggf. Fährkosten.</p></div>
+      <div class="card"><div class="ico">⚠️</div><h3>Zu beachten</h3><p>Nur 1 Bad; kein Rauch-/CO-Melder angegeben; Einkauf 5 km entfernt.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--ember)">Interesse?</span>
+    <h2>Eine von fünf Ideen</h2>
+    <p class="lead">Das ist eine Unterkunft aus unserer Auswahl fürs Silvester-Hideaway. Schau dir die anderen an oder sieh dir das Original an.</p>
+    <a class="btn" href="https://www.airbnb.de/rooms/43656921" target="_blank" rel="noopener">Zum Haus auf Airbnb →</a>
+    <a class="btn ghost" href="index.html">← Alle Unterkünfte</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Haus am Strand · Knebel (Djursland) · 30.12.2026 – 02.01.2027</div>
+    <div>Quelle: airbnb.de/rooms/43656921 · visitaarhus.de</div>
+  </div>
+</footer>
+
+<div id="lb"><span class="x">×</span><img src="" alt=""></div>
+<script>
+  var lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+  document.querySelectorAll('figure img').forEach(function(im){
+    im.addEventListener('click',function(){lbImg.src=im.src;lbImg.alt=im.alt;lb.classList.add('open')});
+  });
+  lb.addEventListener('click',function(){lb.classList.remove('open');lbImg.src=''});
+</script>
+</body>
+</html>
