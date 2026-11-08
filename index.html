@@ -60,6 +60,17 @@
     border-radius:999px;padding:4px 10px;color:var(--sea)}
   .place .go{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--ember-dk);font-size:.92rem}
 
+  /* Ausgebucht / inaktiv */
+  .place.soldout{cursor:not-allowed;box-shadow:none;opacity:.72;border:2px solid #9aa6ad;border-radius:18px;overflow:hidden}
+  .place.soldout:hover{transform:none;box-shadow:none}
+  .place.soldout .cover img{filter:grayscale(1) brightness(.9)}
+  .place.soldout:hover .cover img{transform:none}
+  .place.soldout .go{color:var(--muted)}
+  .cover .soldbadge{position:absolute;top:12px;right:12px;background:#b23;color:#fff;
+    border-radius:999px;padding:4px 11px;font-size:.74rem;font-weight:700;letter-spacing:.03em;z-index:3;
+    box-shadow:0 2px 8px rgba(0,0,0,.3)}
+  .cover .soldout-veil{position:absolute;inset:0;background:rgba(18,33,43,.28);z-index:1}
+
   /* Vergleichstabelle */
   .tablewrap{overflow-x:auto;margin-top:8px;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow)}
   table{border-collapse:collapse;width:100%;min-width:620px;font-size:.88rem}
@@ -87,6 +98,18 @@
   .maplegend .num{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--ember);color:#fff;
     font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center}
   .maplegend em{font-style:normal;font-weight:500;color:var(--muted);font-size:.82rem}
+
+  /* Karte/Legende/Tabelle ausgebucht */
+  .mpin.soldout span{background:#9aa6ad;cursor:not-allowed}
+  .mpin.soldout:hover span{transform:none}
+  .maplegend li.soldout{display:flex;align-items:center;gap:10px;color:var(--sea);font-weight:700;font-size:.95rem;
+    background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:9px 13px;opacity:.75}
+  .maplegend li.soldout .num{background:#9aa6ad}
+  .maplegend .tag-sold{font-weight:700;color:#b23;font-size:.74rem;margin-left:auto;white-space:nowrap}
+  tr.soldout td{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--muted)}
+  tr.soldout td:first-child{color:var(--muted)}
+  tr.soldout .tag-sold{display:inline-block;text-decoration:none;color:#fff;background:#b23;
+    border-radius:999px;padding:1px 8px;font-size:.7rem;font-weight:700;margin-left:6px;vertical-align:middle}
 
   footer{background:#12212b;color:rgba(255,255,255,.55);font-size:.78rem;padding:30px 0;margin-top:20px}
   footer .wrap{display:flex;flex-direction:column;gap:6px}
@@ -140,10 +163,12 @@
         </div>
       </a>
 
-      <!-- Krummhörn -->
-      <a class="place" href="krummhoern.html">
+      <!-- Krummhörn (ausgebucht) -->
+      <div class="place soldout">
         <div class="cover">
           <span class="flag">🇩🇪 Deutschland</span>
+          <span class="soldbadge">Ausgebucht</span>
+          <span class="soldout-veil"></span>
           <img src="fotos/l%C3%BCttje_scholle_krummh%C3%B6rn/wohnzimmer_ausblick.avif" alt="Wohnbereich der Lüttje Scholle">
         </div>
         <div class="body">
@@ -151,9 +176,9 @@
           <h3>Lüttje Scholle</h3>
           <div class="desc">Gemütliches Haus im Warfendorf mit Kamin und Terrasse – Deich und Meer nur 2 km, E-Bike-Ladestation.</div>
           <div class="row"><span class="chip">max. 3 Pers.</span><span class="chip">bis 6 Nächte</span><span class="chip">🔥 Kamin</span><span class="chip">🚲 E-Bike</span></div>
-          <span class="go">Ansehen →</span>
+          <span class="go">Nicht mehr verfügbar</span>
         </div>
-      </a>
+      </div>
 
       <!-- Bjerregård -->
       <a class="place" href="bjerregard.html">
@@ -170,10 +195,12 @@
         </div>
       </a>
 
-      <!-- Friedrichskoog -->
-      <a class="place" href="friedrichskoog.html">
+      <!-- Friedrichskoog (ausgebucht) -->
+      <div class="place soldout">
         <div class="cover">
           <span class="flag">🇩🇪 Deutschland</span>
+          <span class="soldbadge">Ausgebucht</span>
+          <span class="soldout-veil"></span>
           <img src="fotos/nordseejuwel/wohnzimmer(1).jpg" alt="Wohnzimmer mit Kaminofen im Nordseejuwel">
         </div>
         <div class="body">
@@ -181,9 +208,9 @@
           <h3>Nordseejuwel</h3>
           <div class="desc">Ferienhaus mit Kamin – Strand 200 m, Seehundstation und Büsum in der Nähe.</div>
           <div class="row"><span class="chip">82 m²</span><span class="chip">max. 3 Pers.</span><span class="chip">bis 6 Nächte</span><span class="chip">🔥 Kamin</span></div>
-          <span class="go">Ansehen →</span>
+          <span class="go">Nicht mehr verfügbar</span>
         </div>
-      </a>
+      </div>
 
     </div>
   </div>
@@ -201,15 +228,15 @@
         <a class="mpin" style="left:76.1%;top:5.5%"  href="knebel.html" title="Haus am Strand · Knebel"><span>2</span></a>
         <a class="mpin" style="left:35.1%;top:16.3%" href="bjerregard.html" title="Spar To · Bjerregård"><span>4</span></a>
         <a class="mpin" style="left:64.2%;top:36.6%" href="aaro.html" title="Aarø · Kleiner Belt"><span>1</span></a>
-        <a class="mpin" style="left:47.5%;top:76.5%" href="friedrichskoog.html" title="Nordseejuwel · Friedrichskoog"><span>5</span></a>
-        <a class="mpin" style="left:13.8%;top:97.0%" href="krummhoern.html" title="Lüttje Scholle · Loquard"><span>3</span></a>
+        <span class="mpin soldout" style="left:47.5%;top:76.5%" title="Nordseejuwel · Friedrichskoog – ausgebucht"><span>5</span></span>
+        <span class="mpin soldout" style="left:13.8%;top:97.0%" title="Lüttje Scholle · Loquard – ausgebucht"><span>3</span></span>
       </div>
       <ol class="maplegend">
         <li><a href="aaro.html"><span class="num">1</span> Aarø <em>· Kleiner Belt, DK</em></a></li>
         <li><a href="knebel.html"><span class="num">2</span> Haus am Strand <em>· Knebel, DK</em></a></li>
-        <li><a href="krummhoern.html"><span class="num">3</span> Lüttje Scholle <em>· Krummhörn, DE</em></a></li>
+        <li class="soldout"><span class="num">3</span> <span class="label">Lüttje Scholle</span> <em>· Krummhörn, DE</em> <span class="tag-sold">Ausgebucht</span></li>
         <li><a href="bjerregard.html"><span class="num">4</span> Spar To <em>· Bjerregård, DK</em></a></li>
-        <li><a href="friedrichskoog.html"><span class="num">5</span> Nordseejuwel <em>· Friedrichskoog, DE</em></a></li>
+        <li class="soldout"><span class="num">5</span> <span class="label">Nordseejuwel</span> <em>· Friedrichskoog, DE</em> <span class="tag-sold">Ausgebucht</span></li>
       </ol>
     </div>
     <p class="tnote">Drei dänische, zwei deutsche Unterkünfte – alle an der Küste. Tipp auf einen Marker führt zur jeweiligen Seite. Kartendaten © Google.</p>
@@ -229,9 +256,9 @@
         <tbody>
           <tr><td>Aarø</td><td>Insel, DK</td><td>bis 6</td><td>bis 6</td><td>≈ 196 €</td><td>5,0 (14)</td></tr>
           <tr><td>Haus am Strand</td><td>Knebel, DK</td><td>bis 6</td><td>bis 4</td><td>≈ 227 €</td><td>5,0 (82)</td></tr>
-          <tr><td>Lüttje Scholle</td><td>Krummhörn, DE</td><td>bis 6</td><td>max. 3</td><td>≈ 175 €</td><td>5,0 (13)</td></tr>
+          <tr class="soldout"><td>Lüttje Scholle <span class="tag-sold">Ausgebucht</span></td><td>Krummhörn, DE</td><td>bis 6</td><td>max. 3</td><td>≈ 175 €</td><td>5,0 (13)</td></tr>
           <tr><td>Spar To</td><td>Bjerregård, DK</td><td>ab 31.12., bis 6</td><td>bis 5</td><td>≈ 136–255 €</td><td>10/10 (1)</td></tr>
-          <tr><td>Nordseejuwel</td><td>Friedrichskoog, DE</td><td>bis 6</td><td>max. 3</td><td>≈ 177 €</td><td>9,6 (11)</td></tr>
+          <tr class="soldout"><td>Nordseejuwel <span class="tag-sold">Ausgebucht</span></td><td>Friedrichskoog, DE</td><td>bis 6</td><td>max. 3</td><td>≈ 177 €</td><td>9,6 (11)</td></tr>
         </tbody>
       </table>
     </div>
